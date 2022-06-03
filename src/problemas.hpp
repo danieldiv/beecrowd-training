@@ -2,6 +2,7 @@
 #define PROBLEMAS_HPP
 
 #include <iostream>
+// #include <cstring>
 #include <string>
 #include <vector>
 #include <cctype>
@@ -25,6 +26,13 @@ public:
 
 	void hudinhoEOSeuTrabalho();
 	void imagem();
+
+	void cartaNatalCriptografada();
+	void descriptografaCarta(string str, map<string, char> vogais);
+	void descriptografa(string *str, string simbolo, char vogal);
+
+	void tecladoZoeiro();
+	void numerosAhmoc();
 };
 
 #endif

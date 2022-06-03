@@ -4,7 +4,7 @@
 int main() {
 	Problemas p;
 
-	p.imagem();
+	p.numerosAhmoc();
 
 	return 0;
 }

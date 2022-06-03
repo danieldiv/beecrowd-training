@@ -48,6 +48,7 @@
     "algorithm": "cpp",
     "map": "cpp",
     "xtree": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "cctype": "cpp"
   }
 }

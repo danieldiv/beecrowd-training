@@ -206,3 +206,91 @@ void Problemas::imagem() {
 		cout << endl;
 	}
 }
+
+// carta de natal criptografada 3038
+void Problemas::cartaNatalCriptografada() {
+	string F;
+	int p = 0;
+
+	map<string, char> vogais;
+
+	vogais.insert({ "@", 'a' });
+	vogais.insert({ "&", 'e' });
+	vogais.insert({ "!", 'i' });
+	vogais.insert({ "*", 'o' });
+	vogais.insert({ "#", 'u' });
+
+	while (getline(cin, F))
+		descriptografaCarta(F, vogais);
+}
+
+// descriptografa uma string para as vogais corretas
+void Problemas::descriptografaCarta(string str, map<string, char> vogais) {
+	map<string, char>::iterator itr;
+
+	for (itr = vogais.begin(); itr != vogais.end(); ++itr)
+		descriptografa(&str, itr->first, itr->second);
+	cout << str << endl;
+}
+
+// utilizado pela funcao descriptografaCarta
+void Problemas::descriptografa(string *str, string simbolo, char vogal) {
+	int p = 0;
+
+	while (p <= (*str).size()) {
+		p = (*str).find(simbolo);
+		if (p != string::npos) (*str)[p] = vogal;
+	}
+}
+
+// teclado zoeiro 2692 - nao resolvido
+void Problemas::tecladoZoeiro() {
+	int N, M;
+	char s1, s2;
+	string transformacao;
+
+	map<char, char> letras;
+	map<char, char>::iterator itr;
+
+	cin >> N;
+	cin >> M;
+
+	while (N-- > 0) {
+		cin >> s1;
+		cin >> s2;
+
+		letras.insert({ s1, s2 });
+		letras.insert({ s2, s1 });
+	}
+
+	cin.ignore();
+	while (M-- > 0) {
+		getline(cin, transformacao);
+
+		for (int i = 0; i < transformacao.length(); i++) {
+			itr = letras.find(transformacao[i]);
+
+			if (itr != letras.end())
+				transformacao[i] = itr->second;
+		}
+		cout << transformacao << endl;
+	}
+}
+
+// numeros de ahmoc 2049
+void Problemas::numerosAhmoc() {
+	string N, sequencia, aux;
+	int cont = 0, count = 0;
+
+	while (cin >> N, N != "0") {
+		cin >> sequencia;
+
+		if (count++ > 0) cout << endl;
+
+		aux = "Instancia ";
+		aux.append(to_string(++cont)).append("\n");
+		aux += (sequencia.find(N) != string::npos) ? "verdadeira\n" : "falsa\n";
+
+		cout << aux;
+	}
+}
