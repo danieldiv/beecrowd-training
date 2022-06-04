@@ -1,10 +1,13 @@
-#include "problemas.hpp"
+#include "strings.hpp"
+#include "iniciante.hpp"
 #include "arquivo.hpp"
 
-int main() {
-	Problemas p;
 
-	p.numerosAhmoc();
+int main() {
+	Iniciante ini;
+	Strings s;
+
+	s.ultimaCriancaBoa();
 
 	return 0;
 }
