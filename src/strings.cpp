@@ -368,3 +368,108 @@ void Strings::ultimaCriancaBoa() {
 	}
 	cout << ultima << endl;
 }
+
+// duvida etaria 3141
+void Strings::duvidaEtaria() {
+	string nome;
+	string dataAtual, dataNascimento;
+
+	const char sep[] = "/";
+	char *tokens, *aux;
+
+	string atual_dia, atual_mes, atual_ano;
+	string nasc_dia, nasc_mes, nasc_ano;
+
+	int cont, idade;
+
+	getline(cin, nome);
+	getline(cin, dataAtual);
+	getline(cin, dataNascimento);
+
+	aux = (char *)malloc(dataAtual.length() * sizeof(char));
+
+	strcpy(aux, dataAtual.c_str());
+	tokens = strtok(aux, sep);
+
+	cont = 0;
+	while (tokens != NULL) {
+		if (cont == 0) atual_dia.assign(tokens);
+		else if (cont == 1) atual_mes.assign(tokens);
+		else if (cont == 2) atual_ano.assign(tokens);
+
+		tokens = strtok(NULL, sep);
+		cont++;
+	}
+
+	strcpy(aux, dataNascimento.c_str());
+	tokens = strtok(aux, sep);
+
+	cont = 0;
+	while (tokens != NULL) {
+		if (cont == 0) nasc_dia.assign(tokens);
+		else if (cont == 1) nasc_mes.assign(tokens);
+		else if (cont == 2) nasc_ano.assign(tokens);
+
+		tokens = strtok(NULL, sep);
+		cont++;
+	}
+
+	if (atual_dia.compare(nasc_dia) == 0) {
+		if (atual_mes.compare(nasc_mes) == 0)
+			cout << "Feliz aniversario!" << endl;
+	}
+
+	idade = stoi(atual_ano) - stoi(nasc_ano);
+
+	if (atual_mes.compare(nasc_mes) < 0) idade--;
+	else if (atual_mes.compare(nasc_mes) == 0 && atual_dia.compare(nasc_dia) < 0) idade--;
+
+	cout << "Voce tem " << idade << " anos " << nome << "." << endl;
+}
+
+void Strings::fechadura() {
+	int N, cont, inicio, fim;
+	string barra, base, final = "", sub;
+
+	size_t found, tam;
+
+	vector<string> vec;
+	vector<string>::iterator itr;
+
+	cin >> N;
+	cin.ignore();
+
+	inicio = 0;
+	fim = 1;
+
+	while (N-- > 0) {
+		getline(cin, barra);
+		vec.push_back(barra);
+	}
+	itr = vec.begin();
+	base.assign(*itr);
+
+	while (inicio + fim <= base.length()) {
+		sub = base.substr(inicio, fim);
+
+		cont = 0;
+		for (itr = vec.begin() + 1; itr < vec.end(); ++itr) {
+			found = (*itr).find(sub);
+
+			if (found != string::npos) cont++;
+			else break;
+		}
+
+		if (cont == vec.size() - 1) {
+			final.assign(sub);
+			fim++;
+		} else {
+			inicio++;
+			fim = 1 + final.length();
+		}
+	}
+	// tam = final.length();
+	// final.append(" (").append(to_string(tam)).append(")");
+
+	cout << final << endl;
+}

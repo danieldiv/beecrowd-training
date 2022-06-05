@@ -49,6 +49,7 @@
     "map": "cpp",
     "xtree": "cpp",
     "fstream": "cpp",
-    "cctype": "cpp"
+    "cctype": "cpp",
+    "arquivo": "cpp"
   }
 }

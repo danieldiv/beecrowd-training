@@ -5,6 +5,7 @@
 #define tolowerStr(str) loopStr(str) str[d_inc] = tolower(str[d_inc])
 
 #include <string>
+#include <cstring>
 #include <cctype>
 #include <map>
 
@@ -38,6 +39,8 @@ public:
 
 	void substituicaoTag();
 	void ultimaCriancaBoa();
+	void duvidaEtaria();
+	void fechadura();
 };
 
 #endif
