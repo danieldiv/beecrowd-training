@@ -41,6 +41,9 @@ public:
 	void ultimaCriancaBoa();
 	void duvidaEtaria();
 	void fechadura();
+	void comparacaoSubString();
+	void novaSenhaRA();
+	void panielLED();
 };
 
 #endif

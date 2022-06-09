@@ -427,6 +427,7 @@ void Strings::duvidaEtaria() {
 	cout << "Voce tem " << idade << " anos " << nome << "." << endl;
 }
 
+// fechadura 2974
 void Strings::fechadura() {
 	int N, cont, inicio, fim;
 	string barra, base, final = "", sub;
@@ -468,8 +469,93 @@ void Strings::fechadura() {
 			fim = 1 + final.length();
 		}
 	}
-	// tam = final.length();
-	// final.append(" (").append(to_string(tam)).append(")");
-
 	cout << final << endl;
+}
+
+// comparacao de substring 1237
+void Strings::comparacaoSubString() {
+	int inicio, fim;
+	string str1, str2, sub, final;
+
+	size_t found;
+
+	while (getline(cin, str1), getline(cin, str2)) {
+		inicio = 0;
+		fim = 1;
+		final = "";
+
+		while (inicio + fim <= str1.length()) {
+			sub = str1.substr(inicio, fim);
+
+			if (sub.length() > str2.length()) break;
+
+			found = (str2).find(sub);
+
+			if (found != string::npos) {
+				final.assign(sub);
+				fim++;
+			} else {
+				inicio++;
+				fim = 1 + final.length();
+			}
+		}
+		cout << final.length() << endl;
+	}
+}
+
+// nova senha RA 2690
+void Strings::novaSenhaRA() {
+	map<char, int> codigos;
+	map<char, int>::iterator itr;
+
+	int contador = 0;
+
+	string str = "akuGQ*blvIS*cmwEOY*dnxFPZ*eoyJT*fpzDNX*gqAKU*hrCMW*isBLV*jtHR";
+
+	for (int i = 0; i < str.length();i++) {
+		if (str[i] == '*') contador++;
+		codigos.insert({ str[i], contador });
+	}
+
+	int N, posicao, cont = 0;
+	string texto, final = "";
+
+	cin >> N;
+	// cin.ignore();
+
+	vector<string> vec;
+	vector<string>::iterator itr_vec;
+
+	while (N-- > 0) {
+		char szFrase[500]; scanf(" %[^\n]", szFrase);
+
+		texto.assign(szFrase);
+		final.assign("");
+		posicao = cont = 0;
+
+		while (posicao < texto.length()) {
+			itr = codigos.find(texto[posicao]);
+
+			if (itr != codigos.end()) {
+				final.append(to_string(itr->second));
+				cont++;
+			}
+			posicao++;
+
+			if (cont == 12)
+				break;
+		}
+		if (final.length() > 0) vec.push_back(final);
+	}
+
+	if (vec.size() > 0) {
+		for (string s : vec) cout << s << endl;
+	} else {
+		cout << endl;
+	}
+}
+
+// painel LED 2292
+void panielLED() {
+
 }

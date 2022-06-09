@@ -16,9 +16,6 @@
 // 		fgets(p1, 60, stdin);
 // 		fgets(p2, 60, stdin);
 
-// 		if (p1[strlen(p1) - 1] == '\n') p1[strlen(p1) - 1] = 0;
-// 		if (p2[strlen(p2) - 1] == '\n') p2[strlen(p2) - 1] = 0;
-
 // 		inicio = 0;
 // 		fim = 1;
 

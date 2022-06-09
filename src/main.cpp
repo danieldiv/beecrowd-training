@@ -5,7 +5,7 @@ int main() {
 	Iniciante ini;
 	Strings s;
 
-	s.fechadura();
+	s.novaSenhaRA();
 
 	return 0;
 }
