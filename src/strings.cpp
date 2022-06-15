@@ -556,6 +556,101 @@ void Strings::novaSenhaRA() {
 }
 
 // painel LED 2292
-void panielLED() {
+void Strings::panielLED() {
+	int N, tam, p, cont;
+	char str[100];
+	bool aux;
 
+	const char sep[] = " ";
+	char *tokens, *numero;
+	bool *painel;
+
+	scanf("%d", &N);
+
+	Arquivo arq;
+	vector<string> vec;
+
+	while (N-- > 0) {
+		scanf(" %[^\n]", str);
+
+		aux = true;
+		p = 0;
+		tokens = strtok(str, sep);
+
+		while (tokens != NULL) {
+			if (aux) {
+				cont = strlen(tokens);
+				painel = (bool *)malloc(cont * sizeof(bool));
+				aux = !aux;
+
+				while (p < cont) painel[p++] = (tokens[p] == 'O') ? true : false;
+			} else {
+				numero = (char *)malloc(strlen(tokens) * sizeof(char));
+				strcpy(numero, tokens);
+
+				tam = stoi(numero);
+			}
+			tokens = strtok(NULL, sep);
+		}
+
+		// bool val_anterior;
+		// while (tam-- > 0) {
+		// 	painel[0] = !painel[0];
+		// 	val_anterior = painel[0];
+
+		// 	p = 1;
+		// 	while (p < cont && !val_anterior) {
+		// 		painel[p] = !painel[p];
+		// 		val_anterior = painel[p];
+		// 		p++;
+		// 	}
+		// }
+
+		bool aux = (tam % 2 == 0);
+		bool bkp = painel[0];
+
+		painel[0] = (aux) ? painel[0] : !painel[0];
+
+		// corrigir para quando for apenas 1
+
+
+		// if(!aux) {
+		// 	painel[1] = (!bkp) ? painel[1] : !painel[1];
+		// }
+		if (aux == true && bkp == true) {
+			painel[1] = !painel[1];
+		}
+		if (aux == true && bkp == false) {
+			painel[1] = !painel[1];
+		}
+		if (aux == false && bkp == true) {
+			painel[1] = !painel[1];
+		}
+		if (aux == false && bkp == false) {
+			painel[1] = !painel[1];
+		}
+
+		// if (bkp == true && aux == true) {
+		// 	painel[1] = !painel[1];
+		// }
+		// if (bkp == true && aux == false) {
+		// 	painel[1] = !painel[1];
+		// }
+		// if (bkp == false && aux == false) {
+		// 	painel[1] = !painel[1];
+		// }
+
+		p = 0;
+		string salvar = "";
+
+		while (p < cont) {
+			if (painel[p++])
+				salvar.append("O");
+			else
+				salvar.append("X");
+		}
+		vec.push_back(salvar);
+		// cout << salvar << endl;
+	}
+	arq.salvarValores(vec);
 }

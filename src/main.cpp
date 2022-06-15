@@ -1,11 +1,10 @@
 #include "strings.hpp"
 #include "iniciante.hpp"
+#include "sapHungary.hpp"
 
 int main() {
-	Iniciante ini;
-	Strings s;
-
-	s.novaSenhaRA();
+	SapHungary sap;
+	// sap.desafioF();
 
 	return 0;
 }
